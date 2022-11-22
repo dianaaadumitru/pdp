@@ -1,5 +1,6 @@
 import model.Matrix;
 import threads.NormalThread;
+import threads.PoolThread;
 
 
 public class Main {
@@ -9,9 +10,9 @@ public class Main {
     private static int n2 = 10;
     private static int m2 = 10;
 
-    private static int NO_THREADS = 4;
-    private static String APPROACH = "normal";
-    private static String FUNCTION = "kThread"; // row column kThread
+    private static int NO_THREADS = 5;
+    private static String APPROACH = "normal"; // normal pool
+    private static String FUNCTION = "column"; // row column kThread
 
     public static void main(String[] args) {
         Matrix a = new Matrix(n1, m1);
@@ -45,21 +46,23 @@ public class Main {
         a.populateMatrix();
         b.populateMatrix();
 
-//        System.out.println(a);
-//        System.out.println(b);
-        System.out.println(test1);
-        System.out.println(test2);
+        System.out.println(a);
+        System.out.println(b);
+//        System.out.println(test1);
+//        System.out.println(test2);
 
-        if (test1.getM() == test2.getN()) {
-            Matrix result = new Matrix(test1.getN(), test2.getM());
+        if (a.getM() == b.getN()) {
+            Matrix result = new Matrix(a.getN(), b.getM());
             float start = System.nanoTime() / 1_000_000;
             if (APPROACH.equals("normal")) {
-                NormalThread.run(test1, test2, result, NO_THREADS, FUNCTION);
+                NormalThread.run(a, b, result, NO_THREADS, FUNCTION);
+            } else if (APPROACH.equals("pool")) {
+                PoolThread.run(a, b, result, NO_THREADS, FUNCTION);
             }
 
             float end = System.nanoTime() / 1_000_000;
 
-            System.out.println("Time elapsed: " + (end-start)/1000 + " seconds");
+            System.out.println("Time: " + (end-start)/1000 + " seconds");
         } else {
             System.err.println("You cannot multiply these matrices!");
         }
