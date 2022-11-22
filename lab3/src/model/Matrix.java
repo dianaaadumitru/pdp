@@ -5,7 +5,7 @@ import java.util.Random;
 public class Matrix {
     private final int n;
     private final int m;
-    private int [][] matrix;
+    private final int [][] matrix;
 
     public Matrix(int n, int m) {
         this.n = n;

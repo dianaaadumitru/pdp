@@ -15,6 +15,19 @@ public class NormalThread {
                 for (int i = 0; i < noThreads; i++) {
                     threads.add(Utils.initRowThread(i, a, b, c, noThreads));
                 }
+                break;
+
+            case "column":
+                for (int i = 0; i < noThreads; i++) {
+                    threads.add(Utils.initColumnThread(i, a, b, c, noThreads));
+                }
+                break;
+
+            case "kThread":
+                for (int i = 0; i < noThreads; i++) {
+                    threads.add(Utils.initKThread(i, a, b, c, noThreads));
+                }
+                break;
         }
 
         for (Thread thread : threads) {

@@ -2,6 +2,8 @@ package utils;
 
 import exception.MatrixException;
 import model.Matrix;
+import tasks.ColumnTask;
+import tasks.KTask;
 import tasks.MatrixTask;
 import tasks.RowTask;
 
@@ -30,4 +32,29 @@ public class Utils {
         return new RowTask(a, b, c, iStart, jStart, count);
     }
 
+    public static MatrixTask initColumnThread(int index, Matrix a, Matrix b, Matrix c, int noThreads) {
+        int resultSize = c.getN() * c.getM();
+        int count = resultSize / noThreads;
+
+        int iStart = count * index % c.getN();
+        int jStart = count * index / c.getN();
+
+        if (index == noThreads - 1)
+            count += resultSize % noThreads;
+
+        return new ColumnTask(a, b, c, iStart, jStart, count);
+    }
+
+    public static MatrixTask initKThread(int index, Matrix a, Matrix b, Matrix c, int noThreads) {
+        int resultSize = c.getN() * c.getM();
+        int count = resultSize / noThreads;
+
+        if (index < resultSize % noThreads)
+            count++;
+
+        int iStart = index / c.getM();
+        int jStart = index % c.getM();
+
+        return new KTask(a, b, c, iStart, jStart, count, noThreads);
+    }
 }

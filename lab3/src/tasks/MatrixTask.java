@@ -29,6 +29,18 @@ public abstract class MatrixTask extends Thread{
         computeElements();
     }
 
+    public MatrixTask(Matrix a, Matrix b, Matrix result, int iStart, int jStart, int sizeOfTask, int k) {
+        this.pairs = new ArrayList<>();
+        this.a = a;
+        this.b = b;
+        this.result = result;
+        this.iStart = iStart;
+        this.jStart = jStart;
+        this.sizeOfTask = sizeOfTask;
+        this.k = k;
+        computeElements();
+    }
+
     public abstract void computeElements();
 
     @Override

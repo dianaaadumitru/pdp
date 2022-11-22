@@ -3,8 +3,8 @@ package tasks;
 import model.Matrix;
 import model.Pair;
 
-public class RowTask extends MatrixTask {
-    public RowTask(Matrix a, Matrix b, Matrix result, int iStart, int jStart, int sizeOfTask) {
+public class ColumnTask extends MatrixTask {
+    public ColumnTask(Matrix a, Matrix b, Matrix result, int iStart, int jStart, int sizeOfTask) {
         super(a, b, result, iStart, jStart, sizeOfTask);
     }
 
@@ -16,11 +16,11 @@ public class RowTask extends MatrixTask {
 
         while (size > 0 && i < result.getN() && j < result.getM()) {
             pairs.add(new Pair<>(i, j));
-            j++;
+            i++;
             size--;
-            if (j == result.getN()) {
-                j = 0;
-                i++;
+            if (i == result.getM()) {
+                i = 0;
+                j++;
             }
         }
     }
