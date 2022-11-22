@@ -18,7 +18,7 @@ public class KTask extends MatrixTask {
             pairs.add(new Pair<>(i, j));
             size--;
             i += (j + k) / result.getM();
-            j = (j + k ) % result.getM();
+            j = (j + k) % result.getM();
         }
     }
 }

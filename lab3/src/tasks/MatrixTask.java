@@ -8,7 +8,7 @@ import utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MatrixTask extends Thread{
+public abstract class MatrixTask extends Thread {
     public List<Pair<Integer, Integer>> pairs;
     public Matrix a;
     public Matrix b;
@@ -45,7 +45,7 @@ public abstract class MatrixTask extends Thread{
 
     @Override
     public void run() {
-        for (Pair<Integer, Integer> p: pairs) {
+        for (Pair<Integer, Integer> p : pairs) {
             int i = p.getFirst();
             int j = p.getSecond();
             try {

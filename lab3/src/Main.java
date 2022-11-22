@@ -21,27 +21,25 @@ public class Main {
         Matrix test1 = new Matrix(3, 3);
         Matrix test2 = new Matrix(3, 3);
 
-        test1.setMatrixValue(0,0,1);
-        test1.setMatrixValue(0,1,2);
-        test1.setMatrixValue(0,2,3);
-        test1.setMatrixValue(1,0,4);
-        test1.setMatrixValue(1,1,5);
-        test1.setMatrixValue(1,2,6);
-        test1.setMatrixValue(2,0,7);
-        test1.setMatrixValue(2,1,8);
-        test1.setMatrixValue(2,2,9);
+        test1.setMatrixValue(0, 0, 1);
+        test1.setMatrixValue(0, 1, 2);
+        test1.setMatrixValue(0, 2, 3);
+        test1.setMatrixValue(1, 0, 4);
+        test1.setMatrixValue(1, 1, 5);
+        test1.setMatrixValue(1, 2, 6);
+        test1.setMatrixValue(2, 0, 7);
+        test1.setMatrixValue(2, 1, 8);
+        test1.setMatrixValue(2, 2, 9);
 
-        test2.setMatrixValue(0,0,9);
-        test2.setMatrixValue(0,1,8);
-        test2.setMatrixValue(0,2,7);
-        test2.setMatrixValue(1,0,6);
-        test2.setMatrixValue(1,1,5);
-        test2.setMatrixValue(1,2,4);
-        test2.setMatrixValue(2,0,3);
-        test2.setMatrixValue(2,1,2);
-        test2.setMatrixValue(2,2,1);
-
-
+        test2.setMatrixValue(0, 0, 9);
+        test2.setMatrixValue(0, 1, 8);
+        test2.setMatrixValue(0, 2, 7);
+        test2.setMatrixValue(1, 0, 6);
+        test2.setMatrixValue(1, 1, 5);
+        test2.setMatrixValue(1, 2, 4);
+        test2.setMatrixValue(2, 0, 3);
+        test2.setMatrixValue(2, 1, 2);
+        test2.setMatrixValue(2, 2, 1);
 
         a.populateMatrix();
         b.populateMatrix();
@@ -62,7 +60,7 @@ public class Main {
 
             float end = System.nanoTime() / 1_000_000;
 
-            System.out.println("Time: " + (end-start)/1000 + " seconds");
+            System.out.println("Time: " + (end - start) / 1000 + " seconds");
         } else {
             System.err.println("You cannot multiply these matrices!");
         }

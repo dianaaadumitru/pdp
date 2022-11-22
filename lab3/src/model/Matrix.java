@@ -5,7 +5,7 @@ import java.util.Random;
 public class Matrix {
     private final int n;
     private final int m;
-    private final int [][] matrix;
+    private final int[][] matrix;
 
     public Matrix(int n, int m) {
         this.n = n;
@@ -23,8 +23,8 @@ public class Matrix {
 
     public void populateMatrix() {
         Random random = new Random();
-        for (int i = 0; i <n; i++) {
-            for (int j = 0; j < m; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 matrix[i][j] = random.nextInt(10) + 1;
             }
         }
