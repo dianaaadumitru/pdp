@@ -5,14 +5,14 @@ import threads.PoolThread;
 
 public class Main {
 
-    private static final int n1 = 10;
-    private static final int m1 = 10;
-    private static final int n2 = 10;
-    private static final int m2 = 10;
+    private static final int n1 = 9;
+    private static final int m1 = 9;
+    private static final int n2 = 9;
+    private static final int m2 = 9;
 
-    private static final int NO_THREADS = 5;
-    private static final String APPROACH = "normal"; // normal pool
-    private static final String FUNCTION = "column"; // row column kThread
+    private static final int NO_THREADS = 4;
+    private static final String APPROACH = "pool"; // normal pool
+    private static final String FUNCTION = "kThread"; // row column kThread
 
     public static void main(String[] args) {
         Matrix a = new Matrix(n1, m1);

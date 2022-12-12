@@ -35,7 +35,7 @@ public class PoolThread {
             if (!service.awaitTermination(800, TimeUnit.MILLISECONDS)) {
                 service.shutdownNow();
             }
-            System.out.println("result:\n" + c.toString());
+//            System.out.println("result:\n" + c.toString());
         } catch (InterruptedException ex) {
             service.shutdownNow();
         }
