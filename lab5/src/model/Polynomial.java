@@ -45,10 +45,6 @@ public class Polynomial {
         StringBuilder str = new StringBuilder();
         int power = 0;
         for (int i = 0; i <= this.degree; i++) {
-//            if (coefficients.get(i) == 0) {
-//                power++;
-//                continue;
-//            }
             str.append(" ").append(coefficients.get(i)).append("x^").append(power).append(" +");
             power++;
         }

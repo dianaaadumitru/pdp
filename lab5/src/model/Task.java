@@ -1,6 +1,6 @@
 package model;
 
-public class Task implements Runnable{
+public class Task implements Runnable {
 
     private final Polynomial x;
     private final Polynomial y;
@@ -18,7 +18,7 @@ public class Task implements Runnable{
 
     @Override
     public void run() {
-        for (int i = start; i< end; i++) {
+        for (int i = start; i < end; i++) {
             // if there are no more elements
             if (i > result.getLength()) {
                 return;

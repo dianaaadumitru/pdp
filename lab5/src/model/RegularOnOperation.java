@@ -7,7 +7,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class RegularOnOperation {
-    public static final int NR_THREADS = 5;
+    public static final int NR_THREADS = 2;
+
     public Polynomial sequentialForm(Polynomial x, Polynomial y) {
         int sizeOfResult = x.getDegree() + y.getDegree() + 1;
         List<Integer> coefficients = new ArrayList<>();
