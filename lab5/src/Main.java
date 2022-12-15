@@ -2,15 +2,16 @@ import model.KaratsubaOperation;
 import model.Polynomial;
 import model.RegularOnOperation;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-//        Polynomial x = new Polynomial(List.of(5, 0, 10, 6));
-//        Polynomial y = new Polynomial(List.of(1, 2, 4));
+        Polynomial x = new Polynomial(List.of(5, 0, 10, 6));
+        Polynomial y = new Polynomial(List.of(1, 2, 4));
 
-        Polynomial x = new Polynomial(10);
-        Polynomial y = new Polynomial(12);
+//        Polynomial x = new Polynomial(10);
+//        Polynomial y = new Polynomial(12);
         System.out.println("x = " + x);
         System.out.println("y = " + y);
         System.out.println("---------------------------------------------");
