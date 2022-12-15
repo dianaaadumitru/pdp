@@ -40,8 +40,8 @@ public final class DirectedGraph {
             graph.addEdge(nodeA, nodeB);
         }
 
-        System.out.println("nodes: " + graph.nodes);
-        System.out.println("container: " + graph.container);
+//        System.out.println("nodes: " + graph.nodes);
+//        System.out.println("container: " + graph.container);
         return graph;
     }
 
