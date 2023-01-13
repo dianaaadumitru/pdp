@@ -2,15 +2,14 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class KaratsubaOperation {
-    public Polynomial sequentialForm(Polynomial x, Polynomial y) {
+    public static Polynomial sequentialForm(Polynomial x, Polynomial y) {
         if (x.getDegree() < 2 || y.getDegree() < 2) {
             RegularOnOperation regularOnOperation = new RegularOnOperation();
-            return regularOnOperation.sequentialForm(x, y);
+            return regularOnOperation.sequentialFormClassic(x, y);
         }
 
         // divide polynomials
@@ -35,7 +34,7 @@ public class KaratsubaOperation {
         return addPolynomials(addPolynomials(q1, q2), p1);
     }
 
-    public Polynomial addPolynomials(Polynomial x, Polynomial y) {
+    public static Polynomial addPolynomials(Polynomial x, Polynomial y) {
         int minDegree = Math.min(x.getDegree(), y.getDegree());
         int maxDegree = Math.max(x.getDegree(), y.getDegree());
         List<Integer> coefficients = new ArrayList<>(maxDegree + 1);
@@ -49,7 +48,7 @@ public class KaratsubaOperation {
         return new Polynomial(coefficients);
     }
 
-    public Polynomial subtractPolynomials(Polynomial x, Polynomial y) {
+    public static Polynomial subtractPolynomials(Polynomial x, Polynomial y) {
         int minDegree = Math.min(x.getDegree(), y.getDegree());
         int maxDegree = Math.max(x.getDegree(), y.getDegree());
         List<Integer> coefficients = new ArrayList<>(maxDegree + 1);
@@ -69,7 +68,7 @@ public class KaratsubaOperation {
         return new Polynomial(coefficients);
     }
 
-    private void addRemainingCoefficients(Polynomial x, Polynomial y, int minDegree, int maxDegree, List<Integer> coefficients) {
+    private static void addRemainingCoefficients(Polynomial x, Polynomial y, int minDegree, int maxDegree, List<Integer> coefficients) {
         if (minDegree != maxDegree) {
             if (maxDegree == x.getDegree()) {
                 for (int i = minDegree + 1; i <= maxDegree; i++) {
@@ -83,7 +82,7 @@ public class KaratsubaOperation {
         }
     }
 
-    public Polynomial addZeros(Polynomial x, int offset) {
+    public static Polynomial addZeros(Polynomial x, int offset) {
         List<Integer> coefficients = IntStream.range(0, offset).mapToObj(i -> 0).collect(Collectors.toList());
         coefficients.addAll(x.getCoefficients());
         return new Polynomial(coefficients);
