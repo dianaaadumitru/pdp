@@ -18,8 +18,8 @@ public class Main {
         if (me == 0) {
             // master process
             System.out.println("Generating polynomials: ");
-            Polynomial x = new Polynomial(5);
-            Polynomial y = new Polynomial(5);
+            Polynomial x = new Polynomial(100);
+            Polynomial y = new Polynomial(100);
 
             System.out.println("x: " + x);
             System.out.println("y: " + y);
