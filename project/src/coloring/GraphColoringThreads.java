@@ -1,11 +1,15 @@
-package graph;
+package coloring;
+
+import exception.GraphException;
+import graph.ColorsGraph;
+import graph.DirectedGraph;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class GraphColoring {
+public class GraphColoringThreads {
 
     public static Map<Integer, String> getGraphColoring(int threadsNo, DirectedGraph graph, ColorsGraph colors) throws GraphException {
         Vector<Integer> codes = new Vector<>();
