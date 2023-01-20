@@ -12,7 +12,11 @@ public class MainThreads {
 
         System.out.println(graph);
 
+        long startTime = System.currentTimeMillis();
         var graphColoring = GraphColoringThreads.getGraphColoring(THREADS_NO, graph, colorsGraph);
+        long endTime = System.currentTimeMillis();
+
         System.out.println("n-coloring: " + graphColoring);
+        System.out.println("Execution time: " + (endTime - startTime) + " ms");
     }
 }

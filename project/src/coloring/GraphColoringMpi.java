@@ -132,12 +132,4 @@ public class GraphColoringMpi {
 
         return true;
     }
-
-    private static List<Integer> getArrayOf(int length, int value) {
-        return Collections.nCopies(length, value);
-    }
-
-    private static int[] getArrayCopy(int[] array) {
-        return Arrays.copyOf(array, array.length);
-    }
 }

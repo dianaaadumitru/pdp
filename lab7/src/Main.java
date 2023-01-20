@@ -18,16 +18,16 @@ public class Main {
         if (me == 0) {
             // master process
             System.out.println("Generating polynomials: ");
-            Polynomial x = new Polynomial(100);
-            Polynomial y = new Polynomial(100);
+            Polynomial x = new Polynomial(4);
+            Polynomial y = new Polynomial(4);
 
             System.out.println("x: " + x);
             System.out.println("y: " + y);
 
             multiplicationMaster(x, y, size);
         } else {
-//            multiplyRegular(me);
-            multiplyKaratsubaWorker(me);
+            multiplyRegular(me);
+//            multiplyKaratsubaWorker(me);
         }
         MPI.Finalize();
     }
@@ -74,6 +74,8 @@ public class Main {
 
         MPI.COMM_WORLD.Recv(begin, 0, 1, MPI.INT, 0, 0);
         MPI.COMM_WORLD.Recv(end, 0, 1, MPI.INT, 0, 0);
+
+        System.out.println("begin + end: " + begin[0] + " " + end[0]);
 
         Polynomial result = RegularOnOperation.sequentialForm(p[0], q[0], begin[0], end[0]);
 
