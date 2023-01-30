@@ -65,6 +65,14 @@ public class DirectedGraph {
         return container.get(nodeA).contains(nodeB);
     }
 
+    public boolean hasEdges() {
+        for (var cont: container) {
+            if (!cont.isEmpty())
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

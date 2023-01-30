@@ -10,8 +10,6 @@ import java.util.Map;
 public class ColorsGraph {
     private final int colorsNo;
 
-//    private Map<Integer, String> colors;
-
     private List<Pair<Integer, String>> colors;
 
     public ColorsGraph(int colorsNo) {

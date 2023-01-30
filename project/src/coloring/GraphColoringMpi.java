@@ -118,7 +118,6 @@ public class GraphColoringMpi {
 
         //rec. call
         List<Integer> newCodes = graphColoringRec(node, graph, codesNo, codesList, mpiMe, mpiSize, power);
-
         int[] newCodesInt = newCodes.stream().mapToInt(i -> i).toArray();
 
         //send data

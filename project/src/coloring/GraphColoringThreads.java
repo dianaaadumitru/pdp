@@ -12,13 +12,16 @@ import java.util.concurrent.locks.ReentrantLock;
 public class GraphColoringThreads {
 
     public static Map<Integer, String> getGraphColoring(int threadsNo, DirectedGraph graph, ColorsGraph colors) throws GraphException {
+        int codesNo = colors.getColorsNo();
+        if (!graph.hasEdges())
+            return colors.getIndexesToColors(colors.getCodesFromIndexes(Collections.nCopies(graph.getNodeCount(), 0)));
+
         Vector<Integer> codes = new Vector<>();
 
-        int codesNo = colors.getColorsNo();
         Vector<Integer> partialCodes = new Vector<>(Collections.nCopies(graph.getNodeCount(), 0));
         Lock lock = new ReentrantLock();
 
-        graphColoringRec(new AtomicInteger(threadsNo), 0, graph, codesNo, partialCodes, lock, codes, colors);
+        graphColoringRec(new AtomicInteger(threadsNo), 0, graph, codesNo, partialCodes, lock, codes);
 
         // no solution
         if (codes.isEmpty()) {
@@ -29,7 +32,7 @@ public class GraphColoringThreads {
         return colors.getIndexesToColors(colors.getCodesFromIndexes(codes));
     }
 
-    private static void graphColoringRec(AtomicInteger threadsNo, int node, DirectedGraph graph, int codesNo, Vector<Integer> partialCodes, Lock lock, Vector<Integer> codes, ColorsGraph colors) {
+    private static void graphColoringRec(AtomicInteger threadsNo, int node, DirectedGraph graph, int codesNo, Vector<Integer> partialCodes, Lock lock, Vector<Integer> codes) {
         //solution already found
         if (!codes.isEmpty())
             return;
@@ -42,10 +45,8 @@ public class GraphColoringThreads {
                 if (codes.isEmpty()) {
                     codes.addAll(partialCodes);
                 }
-
                 lock.unlock();
             }
-
             return;
         }
 
@@ -57,13 +58,10 @@ public class GraphColoringThreads {
 
         for (int code = 0; code < codesNo; code++) {
             partialCodes.set(nextNode, code);
-
             if (isCodeValid(nextNode, partialCodes, graph)) {
-
                 if (threadsNo.getAndDecrement() > 0) {
                     Vector<Integer> nextPartialCodes = new Vector<>(partialCodes);
-
-                    Thread thread = new Thread(() -> graphColoringRec(threadsNo, nextNode, graph, codesNo, nextPartialCodes, lock, codes, colors));
+                    Thread thread = new Thread(() -> graphColoringRec(threadsNo, nextNode, graph, codesNo, nextPartialCodes, lock, codes));
                     thread.start();
                     threads.add(thread);
                 } else {
@@ -85,8 +83,7 @@ public class GraphColoringThreads {
         for (int code : validCodes) {
             partialCodes.set(nextNode, code);
             Vector<Integer> nextPartialCodes = new Vector<>(partialCodes);
-
-            graphColoringRec(threadsNo, nextNode, graph, codesNo, nextPartialCodes, lock, codes, colors);
+            graphColoringRec(threadsNo, nextNode, graph, codesNo, nextPartialCodes, lock, codes);
         }
     }
 
