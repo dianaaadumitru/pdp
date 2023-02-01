@@ -14,19 +14,27 @@ public class ScalarProduct {
 
         ExecutorService executor = Executors.newFixedThreadPool(noThreads);
 
-        for (final int[] i = {0}; i[0] < a.size(); i[0] += step) {
-            int end = i[0] + step;
+        for (int i = 0; i < noThreads; i += step) {
+            int start = i * step;
+            int end = start + step;
+            if (i == noThreads - 1) {
+                end += a.size() % noThreads;
+            }
 
-            int finalI = i[0];
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    for (int j = finalI; j < end; j++) {
-                        sum[0] += (a.get(j) * b.get(j));
-                    }
+            int finalEnd = end;
+//            Runnable runnable = new Runnable() {
+//                @Override
+//                public void run() {
+//                    for (int j = start; j < finalEnd; j++) {
+//                        sum[0] += (a.get(j) * b.get(j));
+//                    }
+//                }
+//            };
+            executor.execute(() -> {
+                for (int j = start; j < finalEnd; j++) {
+                    sum[0] += (a.get(j) * b.get(j));
                 }
-            };
-            executor.execute(runnable);
+            });
         }
         executor.shutdown();
         try {
