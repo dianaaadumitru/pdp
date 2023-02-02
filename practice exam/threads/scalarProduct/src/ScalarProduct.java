@@ -22,14 +22,6 @@ public class ScalarProduct {
             }
 
             int finalEnd = end;
-//            Runnable runnable = new Runnable() {
-//                @Override
-//                public void run() {
-//                    for (int j = start; j < finalEnd; j++) {
-//                        sum[0] += (a.get(j) * b.get(j));
-//                    }
-//                }
-//            };
             executor.execute(() -> {
                 for (int j = start; j < finalEnd; j++) {
                     sum[0] += (a.get(j) * b.get(j));
